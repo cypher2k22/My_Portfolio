@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 
-const PortfolioSection = ({ data = [] }) => {
+export default function CertificateSection({ data = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const itemsPerPage = 3;
@@ -23,34 +23,37 @@ const PortfolioSection = ({ data = [] }) => {
       className="py-5 mt-5 position-relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      id="achievements"
     >
       <h2 className="brand mb-5 text-center">Certifications</h2>
       <Row className="justify-content-center">
-        {data
-          .slice(currentIndex, currentIndex + itemsPerPage)
-          .map((item, index) => (
-            <Col
-              md={4}
-              key={index}
-              className="portfolio-content position-relative overflow-hidden rounded"
-            >
-              <div className="portfolio-img">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="img-fluid d-block w-100 h-auto"
-                />
-              </div>
-              <div className="text-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center text-center z-2">
-                <div className="portfolio-description text-white">
-                  <h2 className="fw-bold">{item.title}</h2>
-                  <div className="brand py-2">{item.subheading}</div>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            </Col>
-          ))}
-      </Row>
+  {data
+    .slice(currentIndex, currentIndex + (window.innerWidth < 768 ? 1 : 3)) // Show 1 card on mobile, 3 on desktop
+    .map((item, index) => (
+      <Col
+        md={4}
+        xs={12} // Ensures one card per row on mobile
+        key={index}
+        className="portfolio-content position-relative overflow-hidden rounded"
+      >
+        <div className="portfolio-img">
+          <img
+            src={item.image}
+            alt={item.title}
+            className="img-fluid d-block w-100 h-auto"
+          />
+        </div>
+        <div className="text-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center text-center z-2">
+          <div className="portfolio-description text-white">
+            <h2 className="fw-bold">{item.title}</h2>
+            <div className="brand py-2">{item.subheading}</div>
+            <p>{item.description}</p>
+          </div>
+        </div>
+      </Col>
+    ))}
+</Row>
+
 
       {/* Navigation Buttons */}
       <button
@@ -60,7 +63,6 @@ const PortfolioSection = ({ data = [] }) => {
         type="button"
         style={{
           top: "60%",
-          left: "-50px",
           zIndex: "2",
           width: "50px",
           height: "50px",
@@ -81,7 +83,6 @@ const PortfolioSection = ({ data = [] }) => {
         type="button"
         style={{
           top: "60%",
-          right: "-50px",
           zIndex: "2",
           width: "50px",
           height: "50px",
@@ -96,6 +97,4 @@ const PortfolioSection = ({ data = [] }) => {
       </button>
     </section>
   );
-};
-
-export default PortfolioSection;
+}

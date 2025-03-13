@@ -139,16 +139,18 @@ export const softSkills = [
   "Work Ethic"
 ];
 
+import { Figma, Framer, Image as ImageIcon, Globe, Code, Database, Phone as PythonIcon, Palette, GitBranch, Pencil, MonitorSmartphone } from 'lucide-react';
+
 export const techSkills = [
-  "Canva",
-  "JavaScript",
-  "React",
-  "Node.js",
-  "MongoDB",
-  "Python",
-  "Django",
-  "PostgreSQL",
-  "Wireframing",
-  "UI/UX Design",
-  "Git",
+  { name: "Canva", icon: <Palette size={32} />},
+  { name: "JavaScript", icon: <Code size={32} />},
+  { name: "React", icon: <Code size={32} />},
+  { name: "Node.js", icon: <Code size={32} />},
+  { name: "MongoDB", icon: <Database size={32} />},
+  { name: "Python", icon: <PythonIcon size={32} />},
+  { name: "Django", icon: <Globe size={32} />},
+  { name: "PostgreSQL", icon: <Database size={32} />},
+  { name: "Wireframing", icon: <Pencil size={32} />},
+  { name: "UI/UX Design", icon: <MonitorSmartphone size={32} />},
+  { name: "Git", icon: <GitBranch size={32} />}
 ];

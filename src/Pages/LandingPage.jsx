@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import ButtonGlobal from "../Components/ButtonGlobal";
 import Card from "../Components/Card";
-import PortfolioSection from "../Components/PortfolioSection";
+import CertificateSection from "../Components/CertificateSection";
 import ProjectCard from "../Components/ProjectCard";
+import SkillCard from "../Components/SkillCard";
 import {
   education,
   achievments,
@@ -12,11 +13,21 @@ import {
   softSkills,
   techSkills,
 } from "../Constants/Data";
-import Profile from "../assets/frame.png";
+import Profile from "../assets/Frame.png";
 import AboutImg from "../assets/profile.jpg";
+import {
+  Figma,
+  Frame,
+  Image as ImageIcon,
+  Globe2,
+  Box,
+  FileCode2,
+  Phone as Python,
+  Gem,
+} from "lucide-react";
 
 export default function LandingPage() {
-  const blogGroups = projectData.reduce((acc, blog, index) => {
+  const projectGroups = projectData.reduce((acc, blog, index) => {
     if (index % 3 === 0) acc.push([]);
     acc[acc.length - 1].push(blog);
     return acc;
@@ -27,25 +38,15 @@ export default function LandingPage() {
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex > 0 ? prevIndex - 1 : blogGroups.length - 1
+      prevIndex > 0 ? prevIndex - 1 : projectData.length - 1
     );
   };
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex < blogGroups.length - 1 ? prevIndex + 1 : 0
+      prevIndex < projectData.length - 1 ? prevIndex + 1 : 0
     );
   };
-
-  // Divide soft skills
-  const halfSoft = Math.ceil(softSkills.length / 2);
-  const firstSoftColumn = softSkills.slice(0, halfSoft);
-  const secondSoftColumn = softSkills.slice(halfSoft);
-
-  // Divide tech skills
-  const halfTech = Math.ceil(techSkills.length / 2);
-  const firstTechColumn = techSkills.slice(0, halfTech);
-  const secondTechColumn = techSkills.slice(halfTech);
 
   // Contact form
   const [formData, setFormData] = useState({
@@ -138,17 +139,29 @@ export default function LandingPage() {
     };
   }, []);
 
+  // Tabs
+  const [activeTab, setActiveTab] = useState("Date of birth");
+
+  // Define content for each tab
+  const tabContent = {
+    "Date of birth": "March 3rd 2003",
+    Nationality: "Sri Lankan",
+    City: "Jaffna",
+    "Phone Number": "+94 77 123 4567",
+    Email: "bakeekarthigan@gmail.com",
+  };
+
   return (
     <>
       {/* Hero Section */}
       <section
         id="home"
-        className="container-fluid py-5 min-vh-100 d-flex align-items-center"
+        className="container-fluid py-5 min-vh-100 d-flex align-items-center hero"
       >
         <div className="dots-bg overflow-hidden"></div>
         <div className="container mt-5 content-wrapper">
           <div className="row align-items-center">
-            <div className="col-md-6">
+            <div className="col-md-5">
               <button
                 className="button m-0 h-auto p-0 border-0 bg-transparent fs-2 text-decoration-none position-relative text-uppercase"
                 data-text="Awesome"
@@ -180,9 +193,8 @@ export default function LandingPage() {
               </div>
 
               <p className="text-white">
-                Find the best rooms near your university with **StayNearU**. We
-                provide a seamless experience to connect students with the best
-                accommodation options.
+                A motivated and detail-oriented student with a strong academic
+                foundation in Combined Mathematics, Physics, and Chemistry.
               </p>
 
               <ul className="list-unstyled d-flex flex-wrap gap-3 align-items-center py-2">
@@ -215,12 +227,11 @@ export default function LandingPage() {
               </ul>
             </div>
 
-            <div className="col-md-6 text-center">
+            <div className="col-md-7 d-flex align-items-bottom">
               <img
                 src={Profile}
                 alt="StayNearU"
                 className="img-fluid rounded float-animation"
-                style={{ height: "400px", width: "400px" }}
               />
             </div>
           </div>
@@ -229,105 +240,112 @@ export default function LandingPage() {
 
       <Container>
         {/* About Me */}
-        {/* <section id="about" className="py-5">
-          <h2 className="brand text-center mb-5">About Me</h2>
-          <div className="row text-white">
-            <p className="text-center text-md-start">
-              A motivated and detail-oriented student with a strong academic
-              foundation in Combined Mathematics, Physics, and Chemistry,
-              achieving a Z-score of 1.8358, with a district rank of 87 and an
-              island rank of 1472. Possessing excellent analytical and
-              problem-solving skills, with a passion for science and technology.
-              Proven ability to manage time effectively and thrive in both
-              independent and team-based settings. Interested in pursuing a
-              degree in computer science and eager to contribute knowledge and
-              skills to real world challenges.
-            </p>
+        <section id="about" className="pb-5">
+          <div className="row pb-5 align-items-center">
             <div className="col-md-6 d-flex justify-content-center">
-              <div className="profile-cards">
-                <figure className="img-card position-relative rounded">
-                  <img
-                    src={AboutImg}
-                    alt="profile"
-                    className="img-fluid rounded card_title"
-                    style={{ height: "250px", width: "250px" }}
-                  />{" "}
-                </figure>
+              <div className="profile-image-container mb-5 col-md-6">
+                <img
+                  src={AboutImg}
+                  alt="Profile"
+                  className="profile-image img-fluid"
+                />
+                <div className="image-border"></div>
               </div>
             </div>
-            <div className="col-md-6 d-flex flex-column lh-lg justify-content-center align-items-center align-items-md-start">
-              <h6 className="brand">Personal Details</h6>
-              <span>
-                <strong>Full Name:</strong> Bakeerthan Karthigan
-              </span>
-              <span>
-                <strong>Date of Birth:</strong> March 3rd 2003
-              </span>
-              <span>
-                <strong>Nationality:</strong> Sri Lankan
-              </span>
-              <span>
-                <strong>City:</strong> Jaffna
-              </span>
-              <span>
-                <strong>Phone Number:</strong> +94740778329
-              </span>
-              <span>
-                <strong>Email:</strong> bakeekarthigan@gmail.com
-              </span>
-            </div>
-          </div>
-          <div className="row pt-5 text-white">
-            <h5 className="brand pb-3">Soft Skills</h5>
             <div className="col-md-6">
-              <ul className="list-unstyled">
-                {firstSoftColumn.map((skill, index) => (
-                  <li key={index}>
-                    <i className="bi bi-diamond-fill brand me-2 lh-lg"></i>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="col-md-6">
-              <ul className="list-unstyled">
-                {secondSoftColumn.map((skill, index) => (
-                  <li key={index}>
-                    <i className="bi bi-diamond-fill brand me-2 lh-lg"></i>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
+              <h2 className="brand">About Me</h2>
+              <p className="text-white mb-4">
+                A motivated and detail-oriented student with a strong academic
+                foundation in Combined Mathematics, Physics, and Chemistry,
+                achieving a Z-score of 1.8358, with a district rank of 87 and an
+                island rank of 1472.
+              </p>
+              <p className="text-white mb-5">
+                Possessing excellent analytical and problem-solving skills, with
+                a passion for science and technology. Proven ability to manage
+                time effectively and thrive in both independent and team-based
+                settings. Interested in pursuing a degree in computer science
+                and eager to contribute knowledge and skills to real world
+                challenges.
+              </p>
+              <div className="d-flex">
+                <ButtonGlobal text="Hire Me" />
+              </div>
             </div>
           </div>
 
-          <div className="row pt-5 text-white">
-            <h5 className="brand pb-3">Tech Skills</h5>
-            <div className="col-md-6">
-              <ul className="list-unstyled">
-                {firstTechColumn.map((skill, index) => (
-                  <li key={index}>
-                    <i className="bi bi-diamond-fill brand me-2 lh-lg"></i>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
+          <div
+            className="row py-4 mt-5 justify-content-center rounded"
+            style={{ background: "#000" }}
+          >
+            <div className="col-md-7 d-flex flex-wrap justify-content-center gap-3 text-white">
+              {Object.keys(tabContent).map((tab) => (
+                <span
+                  key={tab}
+                  className={`tab-item py-2 px-3 ${
+                    activeTab === tab ? "active-tab" : ""
+                  }`}
+                  onClick={() => setActiveTab(tab)}
+                  style={{ minWidth: "100px", textAlign: "center" }}
+                >
+                  {tab}
+                </span>
+              ))}
             </div>
-            <div className="col-md-6">
-              <ul className="list-unstyled">
-                {secondTechColumn.map((skill, index) => (
-                  <li key={index}>
-                    <i className="bi bi-diamond-fill brand me-2 lh-lg"></i>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
+
+            <div className="tab-content text-center text-white mt-4">
+              {tabContent[activeTab]}
             </div>
           </div>
-        </section> */}
+
+          <div className="row py-5 text-white">
+            <div className="col-md-8">
+              <div className="row gap-3">
+                {softSkills.map((skill, index) => (
+                  <div
+                    key={index}
+                    className="col-auto pills text-white text-uppercase fw-bold border-0"
+                  >
+                    <span>{skill}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="col-md-4 my-5">
+              <h2 className="display-5 fw-bold mb-3 brand">Soft Skills</h2>
+            </div>
+          </div>
+
+          <div className="row py-5">
+            <div className="col-md-4 mb-5">
+              <h2 className="display-5 fw-bold mb-3 brand">
+                Tech Skills & Experience
+              </h2>
+              <p className="text-secondary col-md-8 mb-4">
+                Explore my technical expertise and professional skills that I've
+                developed through years of practice and real-world applications.
+              </p>
+              <ButtonGlobal text="More" />
+            </div>
+
+            <div className="col-md-8">
+              <div className="row g-3">
+                {techSkills.map((skill, index) => (
+                  <div key={index} className="col-6 col-md-3">
+                    <SkillCard
+                      name={skill.name}
+                      icon={skill.icon}
+                      proficiency={skill.proficiency}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Education */}
-        {/* <section className="py-5 text-center" id="education">
+        <section className="py-5 text-center" id="education">
           <h2 className="brand text-center mb-5">Education</h2>
           <div className="row">
             {education.map((education, index) => (
@@ -347,10 +365,10 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
-        </section> */}
+        </section>
 
         {/* Achievments Section */}
-        {/* <section className="py-5" id="achievements">
+        <section className="py-5" id="achievements">
           <h2 className="brand mb-5 text-center">Achievments</h2>
           <div className="row">
             {achievments.map((card) => (
@@ -361,41 +379,70 @@ export default function LandingPage() {
               />
             ))}
           </div>
-        </section> */}
+        </section>
 
         {/* Certifications */}
-        {/* <PortfolioSection data={certificationData} id="achievements" /> */}
+        <CertificateSection data={certificationData} id="achievements" />
 
         {/* Projects */}
-        {/* <section id="projects">
+        <section id="projects">
           <div
             className="carousel slide py-5 position-relative"
-            data-bs-ride="carousel"
-            data-bs-interval="10000"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             <h2 className="brand mb-5 text-center">Projects</h2>
             <div className="carousel-inner">
-              {blogGroups.map((group, groupIndex) => (
-                <div
-                  className={`carousel-item ${
-                    groupIndex === 0 ? "active" : ""
-                  }`}
-                  key={groupIndex}
-                >
-                  <div className="row justify-content-center text-center">
-                    {group.map((blog, blogIndex) => (
-                      <div className="col-md-4 mb-4" key={blogIndex}>
-                        <ProjectCard {...blog} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
+              <div className="row justify-content-center text-center">
+                {projectData
+                  .slice(
+                    currentIndex,
+                    currentIndex + (window.innerWidth < 768 ? 1 : 3)
+                  ) // Show 1 card on mobile, 3 on desktop
+                  .map((blog, index) => (
+                    <div className="col-md-4 col-12 mb-4" key={index}>
+                      <ProjectCard {...blog} />
+                    </div>
+                  ))}
+              </div>
             </div>
+
+            {/* Navigation Buttons */}
+            <button
+              className={`carousel-control-prev rounded-circle border position-absolute ${
+                isHovered ? "d-block" : "d-none"
+              }`}
+              type="button"
+              style={{
+                top: "50%",
+                zIndex: "2",
+                width: "50px",
+                height: "50px",
+                transform: "translateY(-50%)",
+              }}
+              onClick={handlePrev}
+            >
+              <i className="bi bi-arrow-left text-white fs-4"></i>
+            </button>
+
+            <button
+              className={`carousel-control-next rounded-circle border position-absolute ${
+                isHovered ? "d-block" : "d-none"
+              }`}
+              type="button"
+              style={{
+                top: "50%",
+                zIndex: "2",
+                width: "50px",
+                height: "50px",
+                transform: "translateY(-50%)",
+              }}
+              onClick={handleNext}
+            >
+              <i className="bi bi-arrow-right text-white fs-4"></i>
+            </button>
           </div>
-        </section> */}
+        </section>
 
         {/* Contact Section */}
         <section id="contact">

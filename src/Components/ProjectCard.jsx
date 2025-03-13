@@ -1,20 +1,16 @@
 import React from "react";
 
-const ProjectCard = ({
+export default function ProjectCard({
   image,
   category,
   title,
   description,
   url,
-}) => {
+}) {
   return (
     <div className="card custom-card bg-dark text-light border-0 mb-4">
       <div className="card-body text-start">
-        <img
-          src={image}
-          className="card-img-top rounded mb-3"
-          alt={title}
-        />
+        <img src={image} className="card-img-top rounded mb-3" alt={title} />
         <span className="brand fw-bold">{category}</span>
         <h4 className="card-title fw-bold py-2">{title}</h4>
         <p className="card-text">{description}</p>
@@ -38,6 +34,4 @@ const ProjectCard = ({
       </div>
     </div>
   );
-};
-
-export default ProjectCard;
+}
