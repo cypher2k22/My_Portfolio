@@ -13,8 +13,8 @@ import {
   softSkills,
   techSkills,
 } from "../Constants/Data";
-import Profile from "../assets/Frame.png";
-import AboutImg from "../assets/profile.jpg";
+import Profile from "../Assets/Frame.png";
+import AboutImg from "../Assets/profile.jpg";
 import {
   Figma,
   Frame,
