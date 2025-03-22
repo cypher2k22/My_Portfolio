@@ -33,9 +33,9 @@ export const achievments = [
   },
 ];
 
-import Certificate1 from "../Assets/CMSD.jpg";
-import Certificate2 from "../Assets/CMST-Hacking.jpg";
-import Certificate3 from "../Assets/Screenshot 2025-03-22 142520.png";
+import Certificate1 from "../../public/CMSD.jpg";
+import Certificate2 from "../../public/CMST-Hacking.jpg";
+import Certificate3 from "../../public/Screenshot 2025-03-22 142520.png";
 
 
 export const certificationData = [
