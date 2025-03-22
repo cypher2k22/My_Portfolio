@@ -144,10 +144,10 @@ export default function LandingPage() {
 
   // Define content for each tab
   const tabContent = {
-    "Date of birth": "March 3rd 2003",
+    "Date of birth": "March 23rd 2003",
     Nationality: "Sri Lankan",
     City: "Jaffna",
-    "Phone Number": "+94 77 123 4567",
+    "Phone Number": "+94 74 077 8329",
     Email: "bakeekarthigan@gmail.com",
   };
 
@@ -381,11 +381,9 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Certifications */}
         <CertificateSection data={certificationData} id="achievements" />
 
-        {/* Projects */}
-        <section id="projects">
+        {/* <section id="projects">
           <div
             className="carousel slide py-5 position-relative"
             onMouseEnter={() => setIsHovered(true)}
@@ -407,7 +405,6 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Navigation Buttons */}
             <button
               className={`carousel-control-prev rounded-circle border position-absolute ${
                 isHovered ? "d-block" : "d-none"
@@ -442,7 +439,7 @@ export default function LandingPage() {
               <i className="bi bi-arrow-right text-white fs-4"></i>
             </button>
           </div>
-        </section>
+        </section> */}
 
         {/* Contact Section */}
         <section id="contact">

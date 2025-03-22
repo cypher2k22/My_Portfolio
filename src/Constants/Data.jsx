@@ -9,12 +9,12 @@ export const education = [
     title: "Advance Level",
     institude: "JAFFNA HINDU COLLEGE",
     field: "Physical Science",
-    year: "2017",
+    year: "2022",
   },
   {
     title: "Secondary Level",
     institude: "JAFFNA HINDU COLLEGE",
-    year: "2007",
+    year: "2014",
   },
 ];
 
@@ -33,38 +33,40 @@ export const achievments = [
   },
 ];
 
-import Certificate1 from "../Assets/cert1.jpg";
-import Certificate2 from "../Assets/cert1.jpg";
+import Certificate1 from "../Assets/CMSD.jpg";
+import Certificate2 from "../Assets/CMST-Hacking.jpg";
+import Certificate3 from "../Assets/Screenshot 2025-03-22 142520.png";
+
 
 export const certificationData = [
   {
     image: Certificate1,
-    title: "Jet Pay1",
-    subheading: "WEB SITE",
+    title: "Diploma in Information Technology",
+    subheading: "Ethical Hacking & Cyber Security",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed purus consectetur, interdum felis in, auctor ligula.",
+      "Diploma in Information Technology with a specialization in Ethical Hacking and Cyber Security, conducted by CMST - Jaffna. Achieved a Distinction Pass in recognition of outstanding performance during the program.",
   },
   {
     image: Certificate2,
-    title: "Jet Pay2",
-    subheading: "WEB DESIGN",
+    title: "Diploma in Software Engineering",
+    subheading: "Awarded By CMST-Jaffna",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae nunc at velit dictum luctus in at risus.",
+      "Achieved a Distinction Pass in recognition of outstanding performance during the program.",
   },
   {
-    image: Certificate1,
-    title: "Jet Pay3",
-    subheading: "WEB SITE2",
+    image: Certificate3,
+    title: "Web Designing Workshop ",
+    subheading: "Conducted by Orinsto Institute at Orinsto Pvt Ltd, Sungavil, Polonnaruwa",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed purus consectetur, interdum felis in, auctor ligula.",
+      "Participated in a Web Designing Workshop conducted by Orinsto Institute at Orinsto Pvt Ltd, Sungavil, Polonnaruwa, on June 13, 2024. Gained valuable insights into web design principles and best practices.",
   },
-  {
-    image: Certificate2,
-    title: "Jet Pay4",
-    subheading: "WEB DESIGN",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae nunc at velit dictum luctus in at risus.",
-  },
+  // {
+  //   image: Certificate2,
+  //   title: "Jet Pay4",
+  //   subheading: "WEB DESIGN",
+  //   description:
+  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae nunc at velit dictum luctus in at risus.",
+  // },
 ];
 
 export const projectData = [

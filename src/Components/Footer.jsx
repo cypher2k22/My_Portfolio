@@ -48,14 +48,14 @@ export default function Footer() {
               Achievements
               </a>
             </li>
-            <li>
+            {/* <li>
               <a
                 href="#projects"
                 className="text-decoration-none text-white text-bold text-bold"
               >
                 Projects
               </a>
-            </li>
+            </li> */}
           </ul>
           <ul className="list-unstyled d-flex flex-wrap gap-3 justify-content-center align-items-center py-2">
             <li>

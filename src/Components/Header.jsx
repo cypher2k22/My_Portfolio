@@ -119,12 +119,12 @@ export default function Header() {
             >
               Achievements
             </Nav.Link>
-            <Nav.Link
+            {/* <Nav.Link
               onClick={() => scrollToSection("projects")}
               className={getNavLinkClass("projects")}
             >
               Projects
-            </Nav.Link>
+            </Nav.Link> */}
             <ButtonGlobal
               text="Contact Me"
               onClick={() => scrollToSection("contact")}
