@@ -14,7 +14,7 @@ import {
   techSkills,
 } from "../Constants/Data";
 import Profile from "../../public/frame.png";
-import AboutImg from "../../public/frame.png";
+import AboutImg from "../../public/profile.jpg";
 import {
   Figma,
   Frame,
